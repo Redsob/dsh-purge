@@ -68,3 +68,34 @@ dsh plugin --profile desktop add https://codeload.github.com/Redsob/dsh-purge/ta
 
 完全退出宿主（托盘也要退）→ 重开 → 会话标题旁 `dsh-purge` →「清洗」→「应用」。
 Web / 桌面两端分别安装、分别应用。
+
+## 面板上的「哪个版本是咱们的」（2026-11-06）
+
+**改动前**：`lib/update.js:12` 的 `REPO` 写死 `HunYiSage/dsh-purge`，
+`listGithubTags()`（`:629`）拉的是上游 tags，所以面板下拉里
+`v1.1.85` ~ `v1.1.92` **全是上游官方版，没有一个是本 fork**。
+
+顶部「本机 v1.1.90 · 当前」也不是按内容认的：`markCurrent()`（`:601`）只拿
+`package.json` 的版本号去列表里做字符串匹配。本 fork 基于 1.1.90 且没改版本号，
+于是被误标成上游的 `v1.1.90`。**屏幕上两个 v1.1.90，一个是咱们的，一个不是。**
+
+危险点在「切换到此版本」：`applyUpdate()` 会先 `rm -rf lib/`、`bin/`、`docs/`，
+再从 codeload 的 zip 整片覆盖（`:909`）。点上游任何一个版本，
+`12af0a1` 的 `evaluateRestartHosts` 当场消失。
+`autoUpdateIfNeeded()`（`:1128`）明确是 `manual-only`，启动不会自动升 —— **只要不手点就安全**。
+
+上游 `v1.1.91` / `v1.1.92` 共 10 次提交（仓库迁移、文档、随包技能库），
+`lib/core.js` / `lib/index.js` 一次都没碰，那个 bug 仍在；升上去对本修复零收益。
+
+**本次改动**：`REPO` → `Redsob/dsh-purge`。此后面板的版本列表、zip 下载都走自有仓库；
+点「切换到此版本」只会拉到本 fork 的代码，不会抹掉修复。
+同时打 tag **`v1.1.90-redsob.1`** 作为可辨识身份（基于 1.1.90 + 本 fork 全部改动）。
+
+安装指定版本：
+
+```sh
+dsh plugin --profile desktop add https://codeload.github.com/Redsob/dsh-purge/tar.gz/refs/tags/v1.1.90-redsob.1
+```
+
+**回滚到上游通道**：把 `lib/update.js:12` 改回 `HunYiSage/dsh-purge`，
+再 `git checkout 12af0a1 -- lib/update.js` 亦可。改回后不要点「切换到此版本」。
