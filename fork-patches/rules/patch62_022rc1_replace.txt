@@ -1,0 +1,1 @@
+		if (approval === void 0) return { decision: { kind: "allow" }, approvalCancelled: false }; // [dsh-purge] no approval service → allow

@@ -1,0 +1,2 @@
+					if (turnEnds && decision.messages.length === 0) break;
+					if (phase.step === 0 && decision.messages.length === 0) {

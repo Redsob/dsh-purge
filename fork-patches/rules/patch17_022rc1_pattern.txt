@@ -1,0 +1,3 @@
+	editIntent(target, actor) {
+		return this.requirePresent(target, actor, "edit");
+	}

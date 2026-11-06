@@ -2,6 +2,13 @@
   <img src="docs/banner.svg" alt="dsh-purge" width="720">
 </p>
 
+> **このリポジトリは [Redsob/dsh-purge](https://github.com/Redsob/dsh-purge) が保守する fork です**（上流 **1.1.92** ベース、Apache-2.0、出典と帰属表示は [`FORK_NOTES.md`](./FORK_NOTES.md) / [`NOTICE`](./NOTICE)）。
+>
+> インストールと更新は本 fork から:
+> `dsh plugin --profile desktop add https://codeload.github.com/Redsob/dsh-purge/tar.gz/refs/heads/master`
+>
+> 以下の本文は上流の README です。リポジトリ URL は出典表示のため上流を指したままにしています。
+
 <h1 align="center">⚔️ DeepSeek Harness サイバーセキュリティ レッドチームツール (dsh-purge)</h1>
 
 <p align="center"><strong>バージョン 1.1.90</strong></p>

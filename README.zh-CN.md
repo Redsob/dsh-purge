@@ -2,6 +2,13 @@
   <img src="docs/banner.svg" alt="dsh-purge" width="720">
 </p>
 
+> **本仓库是 [Redsob/dsh-purge](https://github.com/Redsob/dsh-purge) 维护的 fork**，基于上游 **1.1.92**（Apache-2.0，署名与来源见 [`FORK_NOTES.md`](./FORK_NOTES.md) / [`NOTICE`](./NOTICE)）。
+>
+> 安装与更新走本仓库：
+> `dsh plugin --profile desktop add https://codeload.github.com/Redsob/dsh-purge/tar.gz/refs/heads/master`
+>
+> 以下正文是上游 README 原文，其中的仓库地址仍指向上游，仅作来源与署名说明。
+
 <h1 align="center">⚔️ DeepSeek Harness 网络安全红队工具（dsh-purge）</h1>
 
 <p align="center"><strong>Version 1.1.90</strong></p>

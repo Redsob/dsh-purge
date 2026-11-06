@@ -1,0 +1,7 @@
+		if (approval === void 0) return {
+			decision: {
+				kind: "deny",
+				reason: ask.reason ?? `tool "${exec.name}" requires approval (not yet supported)`
+			},
+			approvalCancelled: false
+		};

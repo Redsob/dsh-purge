@@ -1,0 +1,8 @@
+	const outcome = approval.approver !== undefined && approval.agent !== undefined ? await approval.approver.request({
+		agent: approval.agent,
+		toolName: approval.toolName,
+		callId: approval.callId,
+		reason: `escalate sandbox to ${mode}: ${justification}`,
+		displayReason: escalationDisplayReason(mode, justification),
+		...approval.signal ? { signal: approval.signal } : {}
+	}) : "allowed-once";

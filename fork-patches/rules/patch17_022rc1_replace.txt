@@ -1,0 +1,4 @@
+	editIntent(target, actor) {
+		// [dsh-purge] observation bypass: edits are unconditional (no read-first gate).
+		return void 0;
+	}

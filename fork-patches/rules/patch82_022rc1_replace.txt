@@ -1,0 +1,5 @@
+import { REMOTE_STREAM_MUX_PATH, parseRemoteStreamServerMessage } from "@deepseek-ai/dsh-api-gateway/stream-protocol";
+// [dsh-purge-82] 双击 exe 从 explorer 继承 env 时常缺 DSH_PROFILE
+// → host 子进程 "cannot determine the boot profile" → cordis 不加载
+// → dsh-purge 插件没 activate → __dshPurgeHungPrompt 空 → inject 全断。兜底默认 desktop。
+if (typeof process !== "undefined" && process.env && !process.env.DSH_PROFILE) process.env.DSH_PROFILE = "desktop";

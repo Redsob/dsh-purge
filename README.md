@@ -2,6 +2,13 @@
   <img src="docs/banner.svg" alt="dsh-purge" width="720">
 </p>
 
+> **This repository is the fork maintained at [Redsob/dsh-purge](https://github.com/Redsob/dsh-purge)**, built on upstream **1.1.92** (Apache-2.0; provenance and attribution in [`FORK_NOTES.md`](./FORK_NOTES.md) / [`NOTICE`](./NOTICE)).
+>
+> Install and update from this fork:
+> `dsh plugin --profile desktop add https://codeload.github.com/Redsob/dsh-purge/tar.gz/refs/heads/master`
+>
+> The body below is the upstream README; its repository links still point upstream and are kept for provenance and attribution.
+
 <h1 align="center">⚔️ DeepSeek Harness cybersecurity red-team tool (dsh-purge)</h1>
 
 <p align="center"><strong>Version 1.1.90</strong></p>

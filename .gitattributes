@@ -1,0 +1,6 @@
+# rules/ 里是逐字节精确匹配的源码片段（宿主文件为 LF）。
+# 一旦被 autocrlf 转成 CRLF，pattern 里的 \n 会变成 \r\n，重放脚本会全部失配。
+fork-patches/rules/** -text
+
+# core.js 的锚点替换按目标文件换行符归一化，保持原样即可。
+lib/core.js -text

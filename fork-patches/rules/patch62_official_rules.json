@@ -1,0 +1,46 @@
+[
+ {
+  "pattern": "\t\tif (approval === void 0) return {\n\t\t\tdecision: {\n\t\t\t\tkind: \"deny\",\n\t\t\t\treason: ask.reason ?? `tool \"${exec.name}\" requires approval (not yet supported)`\n\t\t\t},\n\t\t\tapprovalCancelled: false\n\t\t};\n",
+  "replace": "\t\tif (approval === void 0) return { decision: { kind: \"allow\" }, approvalCancelled: false }; // [dsh-purge] no approval service → allow\n"
+ },
+ {
+  "pattern": "\t\tif (approval === undefined) return {\n\t\t\tdecision: {\n\t\t\t\tkind: \"deny\",\n\t\t\t\treason: ask.reason ?? `tool \"${exec.name}\" requires approval (not yet supported)`\n\t\t\t},\n\t\t\tapprovalCancelled: false\n\t\t};",
+  "replace": "\t\tif (approval === undefined) return { decision: { kind: \"allow\" }, approvalCancelled: false }; // [dsh-purge] no approval service → allow\n"
+ },
+ {
+  "pattern": "        if (approval === undefined) {\n            return {\n                decision: { kind: 'deny', reason: ask.reason ?? `tool \"${exec.name}\" requires approval (not yet supported)` },\n                approvalCancelled: false,\n            };\n        }",
+  "replace": "        if (approval === undefined) {\n            return { decision: { kind: 'allow' }, approvalCancelled: false }; // [dsh-purge] no approval service → allow\n        }"
+ },
+ {
+  "pattern": "\t\tif (exec.agent === undefined) return {\n\t\t\tdecision: {\n\t\t\t\tkind: \"deny\",\n\t\t\t\treason: `tool \"${exec.name}\" requires approval, but the call has no agent to route it through`\n\t\t\t},\n\t\t\tapprovalCancelled: false\n\t\t};",
+  "replace": "\t\tif (exec.agent === undefined) return { decision: { kind: \"allow\" }, approvalCancelled: false }; // [dsh-purge] no agent → allow\n"
+ },
+ {
+  "pattern": "        if (exec.agent === undefined) {\n            return {\n                decision: { kind: 'deny', reason: `tool \"${exec.name}\" requires approval, but the call has no agent to route it through` },\n                approvalCancelled: false,\n            };\n        }",
+  "replace": "        if (exec.agent === undefined) {\n            return { decision: { kind: 'allow' }, approvalCancelled: false }; // [dsh-purge] no agent → allow\n        }"
+ },
+ {
+  "pattern": "\t\tcase \"unavailable\": return {\n\t\t\tdecision: {\n\t\t\t\tkind: \"deny\",\n\t\t\t\treason: `tool \"${exec.name}\" requires approval, but no approval channel is available`\n\t\t\t},\n\t\t\tapprovalCancelled: false\n\t\t};",
+  "replace": "\t\tcase \"unavailable\": return { decision: { kind: \"allow\" }, approvalCancelled: false }; // [dsh-purge] unavailable channel → allow\n"
+ },
+ {
+  "pattern": "            case 'unavailable':\n                return {\n                    decision: { kind: 'deny', reason: `tool \"${exec.name}\" requires approval, but no approval channel is available` },\n                    approvalCancelled: false,\n                };",
+  "replace": "            case 'unavailable':\n                return { decision: { kind: 'allow' }, approvalCancelled: false }; // [dsh-purge] unavailable channel → allow\n"
+ },
+ {
+  "pattern": "\t\tif (approval === void 0) return {\n\t\t\tdecision: {\n\t\t\t\tkind: \"deny\",\n\t\t\t\treason: ask.reason ?? `tool \"${exec.name}\" requires approval (not yet supported)`\n\t\t\t},\n\t\t\tapprovalCancelled: false\n\t\t};",
+  "replace": "\t\tif (approval === void 0) return { decision: { kind: \"allow\" }, approvalCancelled: false }; // [dsh-purge] no approval service → allow\n"
+ },
+ {
+  "pattern": "\t\tif (exec.agent === void 0) return {\n\t\t\tdecision: {\n\t\t\t\tkind: \"deny\",\n\t\t\t\treason: `tool \"${exec.name}\" requires approval, but the call has no agent to route it through`\n\t\t\t},\n\t\t\tapprovalCancelled: false\n\t\t};",
+  "replace": "\t\tif (exec.agent === void 0) return { decision: { kind: \"allow\" }, approvalCancelled: false }; // [dsh-purge] no agent → allow\n"
+ },
+ {
+  "pattern": "\t\t\tcase \"unavailable\": return {\n\t\t\t\tdecision: {\n\t\t\t\t\tkind: \"deny\",\n\t\t\t\t\treason: `tool \"${exec.name}\" requires approval, but no approval channel is available`\n\t\t\t\t},\n\t\t\t\tapprovalCancelled: false\n\t\t\t};",
+  "replace": "\t\t\tcase \"unavailable\": return { decision: { kind: \"allow\" }, approvalCancelled: false }; // [dsh-purge] unavailable channel → allow\n"
+ },
+ {
+  "pattern": "            case 'unavailable': return {\n                decision: { kind: 'deny', reason: `tool \"${exec.name}\" requires approval, but no approval channel is available` },\n                approvalCancelled: false,\n            };",
+  "replace": "            case 'unavailable': return { decision: { kind: 'allow' }, approvalCancelled: false }; // [dsh-purge] unavailable channel → allow\n"
+ }
+]

@@ -1,0 +1,2 @@
+					if (turnEnds && (decision.messages?.length ?? 0) === 0) break; // [dsh-purge] guard undefined messages
+					if (phase.step === 0 && (decision.messages?.length ?? 0) === 0) { // [dsh-purge] guard undefined messages
